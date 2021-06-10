@@ -1,0 +1,8 @@
+POST http://localhost:3001/api/gastos
+Content-Type: application/json
+
+{
+    "nombre": "Supermercado Mercadona",
+    "categoria": "Supermercado",
+    "descripcion": "Compras en gral"
+}
