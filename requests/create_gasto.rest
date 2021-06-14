@@ -1,8 +1,9 @@
 POST http://localhost:3001/api/gastos
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYmQwYmQyMmM0MmM0MDc2NzJmNzUwOCIsInVzZXJuYW1lIjoibWFnYWJyIiwiaWF0IjoxNjIzNDMzMDQ1fQ.WvhIzXf8jn3--30_GZaI39_hTbKravOSBChAp42RePI
 
 {
-    "nombre": "Supermercado Mercadona",
-    "categoria": "Supermercado",
-    "descripcion": "Compras en gral"
+    "nombre": "Lamparitas",
+    "categoria": "Varios",
+    "descripcion": "Compras de lamparitas"
 }

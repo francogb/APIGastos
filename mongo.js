@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
-const password = require('./password.js')
 
-const connectionString = `mongodb+srv://Francogb:${password}@cluster0.rn8yz.mongodb.net/gastosDB?retryWrites=true&w=majority`
+const connectionString = process.env.MONGO_DB_URI
 
 mongoose.connect(connectionString)
   .then(() => {

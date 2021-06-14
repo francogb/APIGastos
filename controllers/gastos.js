@@ -1,4 +1,5 @@
 const gastosRouter = require('express').Router()
+const userExtractor = require('../middleware/userExtractor')
 const Gasto = require('../models/Gasto')
 const Usuario = require('../models/Usuario')
 
@@ -46,9 +47,15 @@ gastosRouter.put('/api/gastos/:id', (request, response, next) => {
   response.status(204).end()
 })
 
-gastosRouter.post('/', async (request, response) => {
-  const { body } = request
-  const { nombre, categoria, valor, descripcion, usuario } = body
+gastosRouter.post('/', userExtractor, async (request, response, next) => {
+  const {
+    nombre,
+    categoria,
+    valor,
+    descripcion
+  } = request.body
+
+  const { usuario } = request
 
   const user = await Usuario.findById(usuario)
 
@@ -57,6 +64,7 @@ gastosRouter.post('/', async (request, response) => {
       error: 'Required "nombre" field is missing'
     })
   }
+
   const newGasto = new Gasto({
     nombre,
     categoria,
@@ -65,15 +73,15 @@ gastosRouter.post('/', async (request, response) => {
     descripcion,
     usuario: user._id
   })
-  //   newGasto.save().then(savedGasto => {
-  //     response.json(savedGasto)
-  //   })
+  try {
+    const savedGasto = await newGasto.save()
+    user.gastos = user.gastos.concat(savedGasto._id)
+    await user.save()
 
-  const savedGasto = await newGasto.save()
-  user.gastos = user.gastos.concat(savedGasto._id)
-  await user.save()
-
-  response.json(savedGasto)
+    response.json(savedGasto)
+  } catch (error) {
+    next(error)
+  }
 })
 
 module.exports = gastosRouter
