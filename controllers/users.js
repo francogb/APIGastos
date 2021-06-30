@@ -6,15 +6,24 @@ usersRouter.post('/', async (request, response) => {
   const { body } = request
   const { username, nombre, password } = body
   const passwordHash = await bcrypt.hash(password, 10)
-  const usuario = new Usuario({
-    username,
-    nombre,
-    passwordHash
-  })
 
-  const savedUser = await usuario.save()
+  const usr = await Usuario.findOne({ username: username })
 
-  response.json(savedUser)
+  if (usr) {
+    response.status(401).json({
+      error: 'User alredy registered'
+    })
+  } else {
+    const usuario = new Usuario({
+      username,
+      nombre,
+      passwordHash
+    })
+
+    const savedUser = await usuario.save()
+
+    response.json(savedUser)
+  }
 })
 
 usersRouter.get('/', async (request, response) => {

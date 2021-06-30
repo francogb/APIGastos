@@ -1,0 +1,1 @@
+GET http://localhost:3001/api/gastos/60dcc5c56b2e1c079bcb0f3a

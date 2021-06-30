@@ -1,0 +1,1 @@
+DELETE http://localhost:3001/api/gastos/60dccabc9cec7808d1c19d93

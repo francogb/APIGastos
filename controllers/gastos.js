@@ -22,7 +22,7 @@ gastosRouter.get('/:id', (request, response, next) => {
   )
 })
 
-gastosRouter.delete('/api/gastos/:id', (request, response, next) => {
+gastosRouter.delete('/:id', (request, response, next) => {
   const { id } = request.params
   Gasto.findByIdAndRemove(id).then(() => {
     response.status(204).end()
@@ -30,7 +30,7 @@ gastosRouter.delete('/api/gastos/:id', (request, response, next) => {
   response.status(204).end()
 })
 
-gastosRouter.put('/api/gastos/:id', (request, response, next) => {
+gastosRouter.put('/:id', userExtractor, async (request, response, next) => {
   const { id } = request.params
   const gasto = request.body
 
@@ -41,10 +41,11 @@ gastosRouter.put('/api/gastos/:id', (request, response, next) => {
     valor: gasto.valor
   }
 
-  Gasto.findByIdAndUpdate(id, newGastoInfo, { new: true }).then(result => {
-    response.json(result).end()
-  }).catch(error => next(error))
-  response.status(204).end()
+  Gasto.findByIdAndUpdate(id, newGastoInfo, { new: true })
+    .then(result => {
+      response.json(result)
+    })
+    .catch(next)
 })
 
 gastosRouter.post('/', userExtractor, async (request, response, next) => {

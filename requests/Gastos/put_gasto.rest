@@ -1,0 +1,10 @@
+PUT  http://localhost:3001/api/gastos/60dcc5c56b2e1c079bcb0f3a
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZGNjNTVjNmIyZTFjMDc5YmNiMGYzOSIsInVzZXJuYW1lIjoiZnJhbmNvZ2IxIiwiaWF0IjoxNjI1MDgyNTIyLCJleHAiOjE2MjUwODYxMjJ9.5sYJLi3FbHz-k9f5vx7XfalzHdsbpXwt1RI6XYIDqAw
+
+{
+  "nombre": "Útiles",
+  "categoria": "Otros",
+  "valor": 9.5,
+  "descripcion": "Cuadernillo, lapiceras, etc"
+}

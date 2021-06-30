@@ -1,0 +1,10 @@
+POST http://localhost:3001/api/gastos
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZGNjNTVjNmIyZTFjMDc5YmNiMGYzOSIsInVzZXJuYW1lIjoiZnJhbmNvZ2IxIiwiaWF0IjoxNjI1MDgyNTIyLCJleHAiOjE2MjUwODYxMjJ9.5sYJLi3FbHz-k9f5vx7XfalzHdsbpXwt1RI6XYIDqAw
+
+{
+    "nombre": "Medicamentos",
+    "valor": 2.5,
+    "categoria": "Farmacia",
+    "descripcion": "Curitas y paracetamol"
+}
