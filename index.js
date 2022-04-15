@@ -12,7 +12,7 @@ const loginRouter = require('./controllers/login')
 app.use(express.json())
 
 app.get('/', (request, response) => {
-  response.send('<h1>Hola Mundo</h1>')
+  response.send('')
 })
 
 app.use('/api/login', loginRouter)
